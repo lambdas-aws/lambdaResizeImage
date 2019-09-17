@@ -10,7 +10,8 @@ import com.amazonaws.services.lambda.runtime.LambdaLogger;
 
 public class Library {
     public Context resizeImage(Context context){
-
+        LambdaLogger logger = context.getLogger();
+        logger.log("The answer is: " + context.toString());
         return context;
         //BufferedImage resized = resize(image, 500, 500);
     }
