@@ -3,8 +3,24 @@
  */
 package lambdaResizeImage;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import com.amazonaws.services.lambda.runtime.Context;
+import com.amazonaws.services.lambda.runtime.LambdaLogger;
+
 public class Library {
-    public boolean someLibraryMethod() {
-        return true;
+    public Context resizeImage(Context context){
+
+        return context;
+        //BufferedImage resized = resize(image, 500, 500);
+    }
+
+    private static BufferedImage resize(BufferedImage img, int height, int width) {
+        Image tmp = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        BufferedImage resized = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = resized.createGraphics();
+        g2d.drawImage(tmp, 0, 0, null);
+        g2d.dispose();
+        return resized;
     }
 }
